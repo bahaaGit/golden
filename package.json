@@ -4,7 +4,8 @@
     "description": "this is a prototype for a storing method",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
     },
     "repository": {
         "type": "git",
@@ -13,10 +14,12 @@
     "author": "Abdul Aziz Bah",
     "license": "ISC",
     "dependencies": {
-        "cors": "^2.8.4",
         "body-parser": "^1.18.2",
+        "cors": "^2.8.4",
         "ejs": "^2.5.7",
         "express": "^4.16.2",
+        "nodemon": "^1.12.1",
+        "pug": "^2.0.0-rc.4",
         "sqlite3": "^3.1.13",
         "sqlite3-transactions": "0.0.5",
         "uuid": "^3.1.0"
