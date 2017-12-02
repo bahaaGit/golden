@@ -6,7 +6,7 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 app.use(express.static(__dirname));
 
-app.get('/test', (req, res) =>{
+app.get('/', (req, res) =>{
 	res.render('index');
 });
 
