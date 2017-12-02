@@ -5,8 +5,8 @@ var app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-app.get('/', (req, res) =>{
-	res.render('index', {site: 'Hello', ph: 'Hello World'});
+app.get('/test', (req, res) =>{
+	res.render('index');
 });
 
 app.listen(3000, () => {
