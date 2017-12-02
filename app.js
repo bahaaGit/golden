@@ -6,7 +6,6 @@ var app = express();
 app.set('view engine', 'pug');
 app.use(express.static(__dirname));
 
-
 //Use bodyParser to read request body data
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 app.use(bodyParser.json());
@@ -24,9 +23,6 @@ app.get('/', function(req, res) {
     //res.sendfile(__dirname + '/abn.html');
 });
 
-app.get('/', function(req, res) {
-    res.render('index', { 'Hello': 'Hello Buddy is this the homepage' });
-});
 app.get('/login', function(req, res) {
     res.render('login', { 'login': 'Please login here' });
 });
