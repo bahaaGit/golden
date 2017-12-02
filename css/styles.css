@@ -2,15 +2,29 @@ a {
 	color: white !important;
 }
 
-body, html {
-	height: 100%;
-	margin: 0;
+body {
+	background: url('../img/bg.jpg') no-repeat center center fixed;
+	background-size: cover;
+	font-family: 'Lato', sans-serif;
+	color: white;
 }
 
-#bg {
-	background-image: url('../img/bg.jpg');
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+#title {
+	font-size: 5em;
+	background-color: grey;
+	text-align: center;
+	position: relative;
+	top: 1em;
+    background: rgba(25, 25, 25, .7);
+}
+
+#getBtn {
+	position: relative;
+	top: 10em;
+	left: 10em;
+}
+
+#getBtn:hover {
+	color: white;
+	background-color: black;
 }
