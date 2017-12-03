@@ -1,8 +1,8 @@
-a {
+.white {
 	color: white !important;
 }
 
-body {
+#front {
 	background: url('../img/bg.jpg') no-repeat center center fixed;
 	background-size: cover;
 	font-family: 'Lato', sans-serif;
@@ -29,6 +29,83 @@ body {
 	background-color: black;
 }
 
-#host {
-
+#loginFront {
+	background-color: #343a40!important;
 }
+
+.tabList {
+	color: blue;
+}
+
+#navBg {
+	background-color: rgba(52, 58, 64, 0.9) !important;
+}
+
+.lBtn {
+	position: relative;
+	right: 5px;
+	background-color: black;
+	color: white;
+}
+
+.loginBtns {
+	position: relative;
+	float: right;
+	top: 5px;
+	padding: 5px;
+}
+.rBtn {
+	position: relative;
+	left: 5px;
+}
+
+#signinTab {
+	position: relative;
+	top: 5px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#registerTab {
+	position: relative;
+	top: 5px;
+	margin: 0 auto;
+	text-align: center
+}
+
+.inputs {
+	position: relative;
+	bottom: 10px
+}
+
+.nav-link.active {
+	background-color: black !important 
+}
+
+.nav-link {
+	color: black 
+}
+
+#navItem {
+	color: white !important
+}
+
+input.inputs {
+	border: 0;
+	width: 50%;
+	opacity: 1 !important;
+	color: black;
+	border-bottom: 2px solid black;
+	letter-spacing: 1px;
+}
+
+input.inputs:focus {
+	outline: none;
+}
+
+input.inputs::placeholder {
+	color: black;
+}
+
+
+

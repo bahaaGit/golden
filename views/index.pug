@@ -1,16 +1,10 @@
 include head
-body
-	.navbar.navbar-expand-sm.bg-dark
-		a.navbar-brand(href='#')= title
-		ul.navbar-nav
-			li.navbar-item
-				a.nav-link(href='#') LOGIN
-			li.navbar-item
-				a.nav-link#host(href='#') BECOME A HOST
+body#front
+	include navbar
+	include sign
 	.container-fluid
 		.row
 			.col-md-4
 			.col-md-4
-				#title= title
+				#title GOLDEN STORAGE
 				button.btn.btn-default#getBtn GET STARTED
-

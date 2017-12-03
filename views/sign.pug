@@ -1,0 +1,37 @@
+#testModal.modal.fade(tabindex='-1' role='dialog')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				.modal-title Login / Registration
+				button(type='button' class='close' data-dismiss='modal') &times;
+			.modal-body
+				ul.nav.nav-pills
+					li.nav-item
+						a.nav-link.active(href='#signinTab' data-toggle='tab') Signin
+					li.nav-item
+						a.nav-link(href='#registerTab' data-toggle='tab') Register
+				.tab-content.tabBody
+					.tab-pane.active#signinTab
+						form#loginForm
+							p
+							input#userID.inputs(type='text' name='userID' placeholder='USERNAME OR PHONE #')
+							p
+							input#password.inputs(type='password' name='password' placeholder='PASSWORD')
+						.loginBtns
+							button(type='button').lBtn.btn Login
+							button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
+					.tab-pane#registerTab
+						form#loginForm
+							p
+							input#userID.inputs(type='text' name='newUser' placeholder='USERNAME')
+							p
+							input#password.inputs(type='password' name='newPassword' placeholder='PASSWORD')
+							p
+							input#address.inputs(type='text' name='newAddress' placeholder='ADDRESS')
+							p
+							input#phone.inputs(type='text' name='newPhone' placeholder='PHONE  (XXX-XXX-XXXX)')
+							p
+							input#dob.inputs(type='date' name='newDate')
+						.loginBtns
+							button(type='button').lBtn.btn Register
+							button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel

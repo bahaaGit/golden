@@ -18,13 +18,13 @@ function authMiddleware(req, res, next) {
 
 //Hello World Endpoint
 app.get('/', function(req, res) {
-    res.render('index', { title: 'Golden Storage'.toUpperCase(), message: '	Hello there!' });
+    res.render('index');
     //return res.send("Hello World");
     //res.sendfile(__dirname + '/abn.html');
 });
 
 app.get('/login', function(req, res) {
-    res.render('login', { 'login': 'Please login here' });
+	res.send('hello');
 });
 
 app.get('/registeraccounts', function(req, res) {
