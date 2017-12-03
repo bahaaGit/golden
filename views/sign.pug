@@ -12,24 +12,25 @@
 						a.nav-link(href='#registerTab' data-toggle='tab') Register
 				.tab-content.tabBody
 					.tab-pane.active#signinTab
-						form#loginForm
-							p
-							input#userID.inputs(type='text' name='userID' placeholder='USERNAME OR PHONE #')
-							p
-							input#password.inputs(type='password' name='password' placeholder='PASSWORD')
-						.loginBtns
-							button(type='button').lBtn.btn Login
-							button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
+						form#loginForm(method='POST' action='/login')
+							#loginBody
+								p
+								input#userID.inputs(type='text' name='test' placeholder='USERNAME OR PHONE #')
+								p
+								input#password.inputs(type='password' name='password' placeholder='PASSWORD')
+							.loginBtns
+								button(type='submit').lBtn.btn Login
+								button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
 					.tab-pane#registerTab
 						form#loginForm
 							p
-							input#userID.inputs(type='text' name='newUser' placeholder='USERNAME')
+							input#newUser.inputs(type='text' name='newUser' placeholder='USERNAME')
 							p
-							input#password.inputs(type='password' name='newPassword' placeholder='PASSWORD')
+							input#newPass.inputs(type='password' name='newPassword' placeholder='PASSWORD')
 							p
-							input#address.inputs(type='text' name='newAddress' placeholder='ADDRESS')
+							input#newAddr.inputs(type='text' name='newAddress' placeholder='ADDRESS')
 							p
-							input#phone.inputs(type='text' name='newPhone' placeholder='PHONE  (XXX-XXX-XXXX)')
+							input#newPhone.inputs(type='text' name='newPhone' placeholder='PHONE  (XXX-XXX-XXXX)')
 							p
 							input#dob.inputs(type='date' name='newDate')
 						.loginBtns

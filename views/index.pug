@@ -1,10 +1,10 @@
 include head
 body#front
 	include navbar
-	include sign
 	.container-fluid
 		.row
 			.col-md-4
 			.col-md-4
 				#title GOLDEN STORAGE
-				button.btn.btn-default#getBtn GET STARTED
+				button.btn.btn-default#getBtn
+					a.getCol(href='/listings') GET STARTED

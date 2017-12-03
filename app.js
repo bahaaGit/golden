@@ -7,8 +7,8 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname));
 
 //Use bodyParser to read request body data
-var urlencodedParser = bodyParser.urlencoded({ extended: true });
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('assets', express.static('assets'));
 
 function authMiddleware(req, res, next) {
@@ -16,31 +16,33 @@ function authMiddleware(req, res, next) {
     return next();
 };
 
+var port = process.env.PORT || 3000;
+var url = 'localhost:' + port;
+
 //Hello World Endpoint
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.render('index');
-    //return res.send("Hello World");
-    //res.sendfile(__dirname + '/abn.html');
 });
 
-app.get('/login', function(req, res) {
-	res.send('hello');
+app.post('/login', (req, res) => {
+    res.redirect(307, '/listings');
 });
 
-app.get('/registeraccounts', function(req, res) {
-    res.render('registeraccounts', { 'registeraccounts': 'Yo! am just here so i can get paid' });
+app.all('/listings', (req, res) => {
+    res.render('listings');
 });
-app.get('/hostaccounts', function() {
 
+app.post('/register', (req, res) => {
+    
+});
+app.get('/hostaccounts', () => {
     res.render('hostaccounts', { 'hostaccounts': 'Please show me the crazy hosts' });
 
 });
-app.get('/portal', function(req, res) {
+app.get('/portal', (req, res) => {
     res.render('portal', { 'portal': 'portal' });
 });
 
-
-var port = process.env.PORT || 3000;
-app.listen(port, function() {
+app.listen(port, () => {
     console.log("Running server on port " + port);
 });
