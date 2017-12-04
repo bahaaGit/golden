@@ -13,9 +13,9 @@ app.use('assets', express.static('assets'));
 
 var arr = [];
 var data = {
-    address: '351 Test Avenue',
-    town: 'West Lafayette, IN 47906',
-    host: 'Anthony Stark'
+    address: '351 Test Avenue'.toUpperCase(),
+    town: 'West Lafayette, IN 47906'.toUpperCase(),
+    host: 'Anthony Stark'.toUpperCase()
 }
 
 for (var i = 0; i < 9; i++) {
@@ -36,11 +36,19 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+
+    var user = req.body.userID;
+    window.sessionStorage.setItem('user', user);
+    var auth = (user)? true : false;
+    window.sessionStorage.setItem('auth', auth);
+
     res.redirect(307, '/listings');
 });
 
 app.all('/listings', (req, res) => {
-    res.render('listings', {array: arr});
+    var auth = sessionStorage.getItem('auth');
+    var user = sessionStorage.getItem('user');
+    res.render('listings', {array: arr, auth: auth, user: user});
 });
 
 app.post('/register', (req, res) => {
