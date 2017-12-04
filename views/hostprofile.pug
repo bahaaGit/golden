@@ -1,0 +1,33 @@
+include head
+body
+	include navbar
+	.container#shift
+		.row
+			form#loginForm(method='POST' action='/login')
+				h1 Add Post
+				.form-group
+					p
+					input#adress.inputs(type='text' name='address' placeholder='Adress ')
+					p
+					input#town.inputs(type='text' name='town' placeholder='Town')
+					p
+					input#host.inputs(type='text' name='host' placeholder='Host')
+					p
+				.addBtns.btn.btn-primary
+					button(type='submit').aBtn.btn Add Post
+		p
+		b
+		p
+		b
+		.row
+			for obj, index in array
+				.col-md-4.shift
+					.post
+						.map Map
+						.description
+							h4.address= obj.address
+							.list
+								.town= '- ' + obj.town
+								.host= '- Host: ' + obj.host 
+							a.btn.reqBtn(href='#' data-toggle='modal' data-target='#reqModal' + index) Delete
+					
