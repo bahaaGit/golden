@@ -7,9 +7,11 @@ body
 				h1 Add Post
 				.form-group
 					p
-					input#adress.inputs(type='text' name='address' placeholder='Adress ')
+					input#adress.inputs(type='text' name='address' placeholder='Address')
 					p
 					input#town.inputs(type='text' name='town' placeholder='Town')
+					p
+					input#adress.inputs(type='text' name='zipcode' placeholder='ZipCode')
 					p
 					input#host.inputs(type='text' name='host' placeholder='Host')
 					p
@@ -20,7 +22,7 @@ body
 		p
 		b
 		.row
-			for obj, index in array
+			for obj, index in posts
 				.col-md-4.shift
 					.post
 						.map Map

@@ -46,8 +46,61 @@ $(document).ready(function() {
 
     });
 
+    $('#loginAdd').on('submit', function() {
+
+        var address = $('#addForm #adress');
+        var town = $('#addForm #town');
+        var zipcode = $('#addForm #zipcode');
+        var host = $('#addForm #host');
+
+
+        //validate
+        //....
+        var posts = {
+            address: address.val(),
+            town: town.val(),
+            zipcode: zipcode.val(),
+            host: host.val(),
+        };
+
+        console.log(posts.address, posts.town);
+        $.ajax({
+            type: 'POST',
+            url: '/hostprofile',
+            data: posts,
+            success: function(data) {
+                //do something with the data via front-end framework
+                console.log("not inside");
+                location.reload();
+            },
+            error: function(textStatus, errorThrown) {
+                console.log("am inside");
+            }
+        });
+
+        return false;
+
+    });
+
     $('.textArea').on('hidden.bs.modal', function(e) {
         $(this).val('').end();
+    });
+
+    $('.textArea').on('click', function() {
+        var post = $(this).text().replace();
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/hostprofile/' + item,
+            data: posts,
+            success: function(data) {
+                //do something with the data via front-end framework
+                console.log("deleted");
+                location.reload();
+            },
+        });
+
+        //  val('').end();
     });
 
 
