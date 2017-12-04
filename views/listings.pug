@@ -3,29 +3,22 @@ body
 	include navbar
 	.container#shift
 		.row
-			.col-md-4
-				.post
-					.box Box
+			for obj, index in array
+				.col-md-4.shift
+					.post
 						.map Map
-			.col-md-4
-				.post
-					.box Box
-						.map Map
-			.col-md-4
-				.post
-					.box Box
-						.map Map
-	.container#shift
-		.row
-			.col-md-4
-				.post
-					.box Box
-						.map Map
-			.col-md-4
-				.post
-					.box Box
-						.map Map
-			.col-md-4
-				.post
-					.box Box
-						.map Map
+						.description
+							h4.address= obj.address
+							.list
+								.town= '- ' + obj.town
+								.host= '- Host: ' + obj.host 
+							a.btn.reqBtn(href='#' data-toggle='modal' data-target='#reqModal' + index) Request
+					.modal.fade(tabindex='-1' role='dialog' id='reqModal' + index)
+						.modal-dialog
+							.modal-content
+								.modal-header
+									.modal-title= 'Request Space for: ' + obj.address
+									button(type='button' class='close' data-dismiss='modal') &times;
+								.modal-body
+									.spaceDesc Brief Description of what you'll be storing
+									textarea.textArea(cols='2' rows='5' maxlength='180')

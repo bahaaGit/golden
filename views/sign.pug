@@ -3,7 +3,7 @@
 		.modal-content
 			.modal-header
 				.modal-title Login / Registration
-				button(type='button' class='close' data-dismiss='modal') &times;
+				button(type='button' class='close' data-dismiss='modal' role='dialog') &times;
 			.modal-body
 				ul.nav.nav-pills
 					li.nav-item
@@ -13,26 +13,27 @@
 				.tab-content.tabBody
 					.tab-pane.active#signinTab
 						form#loginForm(method='POST' action='/login')
-							#loginBody
+							.loginBody
 								p
-								input#userID.inputs(type='text' name='test' placeholder='USERNAME OR PHONE #')
+								input#userID.inputs(type='text' name='userID' placeholder='USERNAME OR PHONE #')
 								p
 								input#password.inputs(type='password' name='password' placeholder='PASSWORD')
 							.loginBtns
 								button(type='submit').lBtn.btn Login
 								button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
 					.tab-pane#registerTab
-						form#loginForm
-							p
-							input#newUser.inputs(type='text' name='newUser' placeholder='USERNAME')
-							p
-							input#newPass.inputs(type='password' name='newPassword' placeholder='PASSWORD')
-							p
-							input#newAddr.inputs(type='text' name='newAddress' placeholder='ADDRESS')
-							p
-							input#newPhone.inputs(type='text' name='newPhone' placeholder='PHONE  (XXX-XXX-XXXX)')
-							p
-							input#dob.inputs(type='date' name='newDate')
-						.loginBtns
-							button(type='button').lBtn.btn Register
-							button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
+						form#loginForm(method='POST' action='/register')
+							.loginBody
+								p
+								input#newUser.inputs(type='text' name='userID' placeholder='USERNAME')
+								p
+								input#newPass.inputs(type='password' name='password' placeholder='PASSWORD')
+								p
+								input#newAddr.inputs(type='text' name='address' placeholder='ADDRESS')
+								p
+								input#newPhone.inputs(type='text' name='phone' placeholder='PHONE (XXX-XXX-XXXX)')
+								p
+								input#dob.inputs(type='date' name='dob')
+							.loginBtns
+								button(type='submit').lBtn.btn Register
+								button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
