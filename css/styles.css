@@ -1,3 +1,7 @@
+body {
+	font-family: 'Lato', sans-serif !important;
+}
+
 .white {
 	color: white !important;
 }
@@ -5,7 +9,6 @@
 #front {
 	background: url('../img/bg.jpg') no-repeat center center fixed;
 	background-size: cover;
-	font-family: 'Lato', sans-serif;
 }
 
 #title {
@@ -124,5 +127,29 @@ input.inputs::placeholder {
 	color: black;
 }
 
+#shift {
+	margin-top: 1em;
+}
 
+
+
+.box {
+	width: 70%;
+	background-color: #343a40;
+	color: white;
+	text-align: center;
+	padding: 5em 0;
+	position: relative;
+	margin: 0 auto;
+}
+
+.map {
+
+	background-color: blue;
+	text-align: center;
+	width: 100%;
+	position: relative;
+	bottom: 6.5em;
+	height: 12em;
+}
 

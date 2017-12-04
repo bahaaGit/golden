@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/bahaaGit/golden/issues"
   },
-  "homepage": "https://github.com/bahaaGit/golden#readme"
+  "homepage": "https://github.com/bahaaGit/golden#readme",
+  "devDependencies": {
+    "reload": "^2.2.2"
+  }
 }

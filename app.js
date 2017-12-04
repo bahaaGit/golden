@@ -2,6 +2,7 @@ var express = require("express"); //Import express to use as our webserver
 var bodyParser = require("body-parser"); //Import bodyParser so we can read request body data
 var express = require("express");
 var app = express();
+var reload = require('reload');
 //app.set('view engine', 'ejs')
 app.set('view engine', 'pug');
 app.use(express.static(__dirname));
@@ -43,6 +44,8 @@ app.get('/portal', (req, res) => {
     res.render('portal', { 'portal': 'portal' });
 });
 
+reload(app);
+
 app.listen(port, () => {
-    console.log("Running server on port " + port);
+    console.log("Running on localhost:" + port);
 });
