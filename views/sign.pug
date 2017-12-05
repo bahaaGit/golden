@@ -22,7 +22,7 @@
 								button(type='submit').lBtn.btn Login
 								button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
 					.tab-pane#registerTab
-						form#loginForm(method='POST' action='/register')
+						form#registerForm
 							.loginBody
 								p
 								input#newUser.inputs(type='text' name='userID' placeholder='USERNAME')
@@ -35,5 +35,5 @@
 								p
 								input#dob.inputs(type='date' name='dob')
 							.loginBtns
-								button(type='submit').lBtn.btn Register
+								button#registerBtn(type='button' onclick ='regUser()').lBtn.btn Register
 								button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
