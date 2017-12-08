@@ -55,15 +55,16 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/hostprofile', (req, res) => {
-        //querry db
-        res.render('hostprofile', { posts: posts, auth: auth, user: user });
-    });
+    // app.get('/hostprofile', (req, res) => {
+    //     //querry db
+    //     res.render('hostprofile', { posts: posts, auth: auth, user: user });
+    // });
 
-    app.post('/hostprofile', function(req, res) {
-        posts.push(req.body);
-        // res.json(posts);
-        res.render('hostprofile', { posts: posts });
+    app.get('/hostprofile', function(req, res) {
+        db_posts.find({}, function(err, data) {
+            if(err) throw err;
+            res.render('hostprofile', { posts: data, user: user, auth: auth });
+        });
     });
 
     app.delete('/hostprofile/:item', function(req, res) {
@@ -73,7 +74,10 @@ module.exports = function(app) {
     });
 
     app.all('/listings', (req, res) => {
-        res.render('listings', { posts: posts, user: user, auth: auth });
+        db_posts.find({}, function(err, data) {
+            if(err) throw err;
+            res.render('listings', { posts: data, user: user, auth: auth });
+        });
     });
 
     app.post('/register', (req, res) => {
