@@ -7,13 +7,13 @@ module.exports = function(app) {
     var mongoose = require('mongoose');
 
     mongoose.connect('mongodb://abah:abah@ds133776.mlab.com:33776/golden');
-    var postSchema = new mongoose.Schema({ address: String, town: String, zipcode: String, host: String, phone: String});
+    var postSchema = new mongoose.Schema({ address: String, town: String, zipcode: String, host: String, phone: String, mapUrl: String });
     var userSchema = new mongoose.Schema({ username: String, password: String, address: String, zipcode: String, phone: String, dod: String });
 
-    postSchema.methods.getMapUrl = function() {
-        var req = this.address;
+    var getMapUrl = function(address, town) {
+        var req = address;
         req += ", ";
-        var temp = this.town.replace("-", "");
+        var temp = town.replace("-", "");
         req += temp;
         req = req.replace("  ", " ");
         req = req.replace(/ /g, "+");
@@ -45,7 +45,7 @@ module.exports = function(app) {
 
 
     app.get('/', (req, res) => {
-        res.render('index', {auth: auth, user: user});
+        res.render('index', { auth: auth, user: user });
     });
 
     app.post('/login', (req, res) => {
@@ -53,16 +53,13 @@ module.exports = function(app) {
         db_users.find({ username: user.userID, password: user.password }, function(err, data) {
             if (err) throw err;
         });
+        res.status(200).send('success');
     });
 
-    // app.get('/hostprofile', (req, res) => {
-    //     //querry db
-    //     res.render('hostprofile', { posts: posts, auth: auth, user: user });
-    // });
-
-    app.get('/hostprofile', function(req, res) {
+    app.get('/hostprofile', (req, res) => {
+        //querry db
         db_posts.find({}, function(err, data) {
-            if(err) throw err;
+            if (err) throw err;
             res.render('hostprofile', { posts: data, user: user, auth: auth });
         });
     });
@@ -84,7 +81,7 @@ module.exports = function(app) {
         var user = req.body;
 
         var data = {
-            userID: user.userID,
+            username: user.userID,
             password: user.password,
             address: user.address,
             zipcode: user.zipcode,
@@ -92,13 +89,30 @@ module.exports = function(app) {
             dod: user.dob,
         }
 
-        var addUser = new User(data);
-
-        addUser.save(function(err, success){
-            if(err) throw err;
+        var addUser = db_users(data).save(function(err, data) {
+            if (err) throw err;
             console.log('success');
         });
 
+    });
+
+    app.post('/addPost', (req, res) => {
+        var post = req.body;
+
+        var data = {
+            address: post.address,
+            town: post.town,
+            zipcode: post.zipcode,
+            host: post.host,
+            phone: post.phone,
+            mapUrl: getMapUrl(post.address, post.town)
+        }
+
+        var addPost = db_posts(data).save(function(err, data) {
+            if (err) throw err;
+            console.log('success');
+            res.status(200).send('success');
+        });
     });
 
     app.get('/portal', (req, res) => {

@@ -25,8 +25,7 @@ function regUser() {
         data: newUser,
         success: function(data) {
             //do something with the data via front-end framework
-            console.log(data);
-            // window.location.href = '/listings';
+            console.log('success');
         },
         error: function(err) {
             console.log(err);
@@ -48,7 +47,7 @@ function userLogin() {
         },
         success: function(data) {
             console.log(data)
-            window.location.href = '/listings';
+            window.location.href = '/hostprofile';
         },
         error: function(err) {
             console.log(err);
@@ -86,9 +85,25 @@ function addPost() {
     var zipcode = $('#addZipcode').val();
     var host = $('#addHost').val();
     var phone = $('#addNumber').val();
+
     var newPost = {
         address: addr,
         town: town,
         zipcode: zipcode,
+        host: host,
+        phone: phone
     }
+
+    $.ajax({
+        type: 'POST',
+        url: '/addPost',
+        data: newPost,
+        success: function(data) {
+            console.log('success');
+            window.location.href = '/listings';
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    })
 }
