@@ -1,118 +1,201 @@
+<< << << < HEAD
 $(document).ready(function() {
 
-    $('#loginForm').on('submit', function() {
-        var userID = $('#userID');
-        var password = $('#password');
-        console.log(userID);
+            $('#loginForm').on('submit', function() {
+                        var userID = $('#userID');
+                        var password = $('#password');
+                        console.log(userID);
 
 
-        var todo = { userID: userID.val(), password: password.val() };
+                        var todo = { userID: userID.val(), password: password.val() };
 
-        console.log(todo.userID, todo.password);
-        /*$.ajax({
-            type: 'POST',
-            url: '/login',
-            data: todo,
-            success: function(data) {
-                console.log("not inside");
-            },
-            error: function(textStatus, errorThrown) {
-                console.log("am inside");
-            }
-        });*/
+                        console.log(todo.userID, todo.password);
+                        /*$.ajax({
+                            type: 'POST',
+                            url: '/login',
+                            data: todo,
+                            success: function(data) {
+                                console.log("not inside");
+                            },
+                            error: function(textStatus, errorThrown) {
+                                console.log("am inside");
+                            }
+                        });*/
 
-        return false;
+                        return false;
 
-    });
+                        ===
+                        ===
+                        =
+                        // Initialize Firebase
+                        /*var config = {
+                        apiKey: "AIzaSyDvrvAVb8-u2m0k-eej1ykxW7ucqJxjpqo",
+                        authDomain: "mygoldenstorage-deacf.firebaseapp.com",
+                        databaseURL: "https://mygoldenstorage-deacf.firebaseio.com",
+                        projectId: "mygoldenstorage-deacf",
+                        storageBucket: "mygoldenstorage-deacf.appspot.com",
+                        messagingSenderId: "58479308080"
+                        };
+                        firebase.initializeApp(config);*/
 
-    $('#loginAdd').on('submit', function() {
+                        // $('#loginBtn').on('submit', function() {
 
-        var address = $('#addForm #adress');
-        var town = $('#addForm #town');
-        var zipcode = $('#addForm #zipcode');
-        var host = $('#addForm #host');
+                        //     var userID = $('#userID').val();
+                        //     var password = $('#password').val();
 
+                        //     /*firebase.auth().signInWithEmailAndPassword(userID, password).catch(function(error) {
+                        //     // Handle Errors here.
+                        //     var errorCode = error.code;
+                        //     var errorMessage = error.message;
+                        //     // ...
+                        //     });*/
+                        //     //validate
+                        //     //....
+                        //     var todo = {
+                        //         userID: userID,
+                        //         password: password
+                        //     };
 
-        //validate
-        //....
-        var posts = {
-            address: address.val(),
-            town: town.val(),
-            zipcode: zipcode.val(),
-            host: host.val(),
-        };
+                        //     console.log(todo.userID, todo.password);
+                        //     $.ajax({
+                        //         type: 'POST',
+                        //         url: '/login',
+                        //         data: todo,
+                        //         success: function(data) {
+                        //             //do something with the data via front-end framework
+                        //             //console.log(data);
+                        //             console.log("not inside");
+                        //             //location.reload();
+                        //         },
+                        //         error: function(textStatus, errorThrown) {
+                        //             console.log("am inside");
+                        //         }
+                        //     });
 
-        console.log(posts.address, posts.town);
-        $.ajax({
-            type: 'POST',
-            url: '/hostprofile',
-            data: posts,
-            success: function(data) {
-                //do something with the data via front-end framework
-                console.log("not inside");
-                location.reload();
-            },
-            error: function(textStatus, errorThrown) {
-                console.log("am inside");
-            }
-        });
+                        //     return false;
 
-        return false;
+                        // });
 
-    });
+                        // $('#loginAdd').on('submit', function() {
 
-    $('.textArea').on('hidden.bs.modal', function(e) {
-        $(this).val('').end();
-    });
-
-    $('.textArea').on('click', function() {
-        var post = $(this).text().replace();
-        $.ajax({
-            type: 'DELETE',
-            url: '/hostprofile/' + item,
-            data: posts,
-            success: function(data) {
-                //do something with the data via front-end framework
-                console.log("deleted");
-                location.reload();
-            },
-        });
-
-        //  val('').end();
-    });
-
-
-    // $('#loginForm2').on('submit', function() {
-
-    // var newUser = $('#loginForm #newUser');
-    // var password = $('#loginForm #newPass');
-    // var newAddr = $('#loginForm #newAddr');
-    // var newPhone = $('#loginForm #newPhone');
-    // var dob = $('#loginForm #dob');
+                        //     var address = $('#addForm #adress');
+                        //     var town = $('#addForm #town');
+                        //     var zipcode = $('#addForm #zipcode');
+                        //     var host = $('#addForm #host');
 
 
-    // var todo_user = {
-    // newUser: newUser.val(),
-    // password: password.val(),
-    // newAddr: newAddr.val(),
-    // newPhone: newPhone.val(),
-    // dob: dob.val()
-    // };
-    // console.log("sucessfull");
+                        //     //validate
+                        //     //....
+                        //     var posts = {
+                        //         address: address.val(),
+                        //         town: town.val(),
+                        //         zipcode: zipcode.val(),
+                        //         host: host.val(),
+                        //     };
 
-    // $.ajax({
-    // type: 'POST',
-    // url: '/login',
-    // data: todo_user,
-    // success: function(data) {
-    // //do something with the data via front-end framework
-    // console.log("sucessfull");
-    // console.log(data);
-    // },
-    // error: function(textStatus, errorThrown) {
-    // console.log("not Sucessfull");
-    // }
-    // });
-    // return false;
-    // });
-});
+                        //     console.log(posts.address, posts.town);
+                        //     $.ajax({
+                        //         type: 'POST',
+                        //         url: '/hostprofile',
+                        //         data: posts,
+                        //         success: function(data) {
+                        //             //do something with the data via front-end framework
+                        //             console.log("not inside");
+                        //             location.reload();
+                        //         },
+                        //         error: function(textStatus, errorThrown) {
+                        //             console.log("am inside");
+                        //         }
+                        //     });
+
+                        //     return false;
+
+                        // });
+
+                        // $('.textArea').on('hidden.bs.modal', function(e) {
+                        //     $(this).val('').end();
+                        // });
+
+                        // $('.textArea').on('click', function() {
+                        //     var post = $(this).text().replace();
+
+                        //     $.ajax({
+                        //         type: 'DELETE',
+                        //         url: '/hostprofile/' + item,
+                        //         data: posts,
+                        //         success: function(data) {
+                        //             //do something with the data via front-end framework
+                        //             console.log("deleted");
+                        //             location.reload();
+                        //         },
+                        //     });
+
+                        //     //  val('').end();
+                        // });
+
+
+
+                        function regUser() {
+
+                            var user = $('#newUser').val();
+                            var password = $('#newPass').val();
+                            var newAddr = $('#newAddr').val();
+                            var newPhone = $('#newPhone').val();
+                            var dob = $('#dob').val();
+
+
+                            var newUser = {
+                                userID: user,
+                                password: password,
+                                address: newAddr,
+                                phone: newPhone,
+                                dob: dob,
+                            };
+
+                            console.log(newUser);
+
+                            $.ajax({
+                                type: 'POST',
+                                url: '/register',
+                                data: newUser,
+                                success: function(data) {
+                                    //do something with the data via front-end framework
+                                    console.log("sucessfull");
+                                    window.location.href = '/listings';
+                                },
+                                error: function(err) {
+                                    console.log(err);
+                                }
+                            })
+                        }
+
+                        function userLogin() {
+                            var user = $('#userID').val();
+                            var pass = $('#password').val();
+
+
+                            $.ajax({
+                                type: 'POST',
+                                url: '/login',
+                                data: {
+                                    userID: user,
+                                    password: pass,
+                                },
+                                success: function(data) {
+                                    window.location.href = '/listings';
+                                },
+                                error: function(err) {
+                                    console.log(err);
+                                }
+                            });
+
+
+                        }
+
+                        function addPost() {
+
+                            var addr = $('#addAddress').val();
+                            var town = $('#addTown').val() + ', IN' + $('#addZipcode').val();
+                            var zipcode = $('#addZipcode').val();
+                            var host = $('#addHost').val();
+                        }

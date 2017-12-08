@@ -12,17 +12,17 @@
 						a.nav-link(href='#registerTab' data-toggle='tab') Register
 				.tab-content.tabBody
 					.tab-pane.active#signinTab
-						form#loginForm(method='POST' action='/login')
+						form#loginForm
 							.loginBody
 								p
 								input#userID.inputs(type='text' name='userID' placeholder='USERNAME OR PHONE #')
 								p
 								input#password.inputs(type='password' name='password' placeholder='PASSWORD')
 							.loginBtns
-								button(type='submit').lBtn.btn Login
+								button(type='button' onclick='userLogin()').lBtn.btn Login
 								button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel
 					.tab-pane#registerTab
-						form#loginForm(method='POST' action='/register')
+						form#registerForm
 							.loginBody
 								p
 								input#newUser.inputs(type='text' name='userID' placeholder='USERNAME')
@@ -35,5 +35,5 @@
 								p
 								input#dob.inputs(type='date' name='dob')
 							.loginBtns
-								button(type='submit').lBtn.btn Register
+								button#registerBtn(type='button' onclick ='regUser()').lBtn.btn Register
 								button(type='button' data-dismiss='modal').rBtn.btn.btn-secondary Cancel

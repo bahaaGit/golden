@@ -3,20 +3,20 @@ body
 	include navbar
 	.container#shift
 		.row
-			form#loginForm(method='POST' action='/login')
+			form#loginForm
 				h1 Add Post
 				.form-group
 					p
-					input#adress.inputs(type='text' name='address' placeholder='Address')
+					input#addAddress.inputs(type='text' name='address' placeholder='Address')
 					p
-					input#town.inputs(type='text' name='town' placeholder='Town')
+					input#addTown.inputs(type='text' name='town' placeholder='Town')
 					p
-					input#adress.inputs(type='text' name='zipcode' placeholder='ZipCode')
+					input#addZipcode.inputs(type='text' name='zipcode' placeholder='ZipCode')
 					p
-					input#host.inputs(type='text' name='host' placeholder='Host')
+					input#addHost.inputs(type='text' name='host' placeholder='Host')
 					p
 				.addBtns.btn.btn-primary
-					button(type='submit').aBtn.btn Add Post
+					button(type='button' onclick='addPost()').aBtn.btn Add Post
 		p
 		b
 		p
