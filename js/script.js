@@ -163,13 +163,32 @@ function userLogin() {
 
 }
 
+function getMapUrl(addr, town) {
+        var req = addr;
+        req += ", ";
+        var temp = town.replace("-", "");
+        req += temp;
+        req = req.replace("  ", " ");
+        req = req.replace(/ /g, "+");
+        
+        var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=";
+        var apiKey = "&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig"; // our API key
+        var params = "&zoom=15&size=350x200";
+        var markers = "&markers=size:mid%7Ccolor:red%7C";
+        markers += req;
+        
+        params += markers;
+        params += apiKey;
+        mapURL += req;
+        mapURL += params;
+        console.log(mapURL);
+}
+
 function addPost() {
 
     var addr = $('#addAddress').val();
     var town = $('#addTown').val() + ', IN' + $('#addZipcode').val();
     var zipcode = $('#addZipcode').val();
-    var host = $('#addHost').val();
-
-    
+    var host = $('#addHost').val();    
 
 }
