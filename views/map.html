@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+
+
+</head>
+<body>
+    <!-- Google maps API. Convert this to pug when done -->
+    
+    <script>
+        // 350x200 px
+        // EX: 305+N+University+St,+West+Lafayette,+IN+47907/
+        // TEST obj.address:305 N University St
+        // TEST obj.town:- West Lafayette, IN 47907
+        //
+		// obj.address:351 Test Avenue
+        // obj.town:- West Lafayette, IN 47906
+        // remove '-' and leading white space, replace spaces w/ +
+        //
+        // <img>
+    	// https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&key=YOUR_API_KEY
+		// </img>
+		// use 'obj.address'
+        // and 'obj.town' to construct the url
+        
+        var req = obj.address;
+        req += ", ";
+        var temp = obj.town.replace("-", "");
+        req += temp;
+        req = req.replace("  ", " ");
+        req = req.replace(/ /g, "+");
+        
+        var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=";
+        var apiKey = "&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig"; // our API key
+        var params = "&zoom=15&size=350x200";
+        var markers = "&markers=size:mid%7Ccolor:red%7C";
+        markers += req;
+        
+        params += markers;
+        params += apiKey;
+        mapURL += req;
+        mapURL += params;
+        console.log(mapURL);
+        // &maptype=roadmap(maybe after dimension spec)
+        // EX mapURL: https://maps.googleapis.com/maps/api/staticmap?center=305+N+University+St,+West+Lafayette,+IN+47907&zoom=15&size=350x200&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig
+        //<img border="0" src=mapURL width="350" height="200" alt="Host Address" usemap="#map">
+
+        // &markers=size:tiny%7Ccolor:green%7CDelta+Junction,AK
+
+        // convert-> pug:
+        /*
+        script(type = "text/javascript").
+            var req = obj.address;
+            req += ", ";
+            var temp = obj.town.replace("-", "");
+            req += temp;
+            req = req.replace("  ", " ");
+            req = req.replace(/ /g, "+");
+            var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=";
+            var apiKey = "&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig"; // our API key
+            var params = "&zoom=15&size=350x200";
+            var markers = "&markers=size:mid%7Ccolor:red%7C";
+            markers += req;
+            params += markers;
+            params += apiKey;
+            mapURL += req;
+            mapURL += params;
+            console.log(mapURL);
+        */
+    </script>
+</body>
+</html>
