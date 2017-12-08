@@ -1,10 +1,11 @@
 var posts = [];
-var data = {
-    address: '351 Test Avenue',
-    town: 'West Lafayette, IN 47906',
-    zipcode: '47906',
-    host: 'Anthony Stark',
-    getMapUrl: function() {
+function post(address, town, zipcode, host, phone){
+    this.address = address,
+    this.town = town,
+    this.zipcode = zipcode,
+    this.host = host,
+    this.phone = phone,
+    this.getMapUrl = function() {
         var req = this.address;
         req += ", ";
         var temp = this.town.replace("-", "");
@@ -25,6 +26,8 @@ var data = {
         return mapURL;
     }
 }
+
+var data = new post('351 Test Avenue', 'West Lafayette, IN 47906', '47906', 'Anthony Stark', '234-235-2351',);
 for (var i = 0; i < 9; i++) {
     posts.push(data);
 }
@@ -46,18 +49,18 @@ module.exports = function(app) {
 
 
     app.get('/', (req, res) => {
-        res.render('index');
+        res.render('index', {auth: auth, user: user});
     });
 
     app.post('/login', (req, res) => {
-        user = req.body.userID.toUpperCase();
+        user = req.body.userID;
         auth = true;
         res.status(200).send('success');
     });
 
     app.get('/hostprofile', (req, res) => {
         //querry db
-        res.render('hostprofile', { posts: posts });
+        res.render('hostprofile', { posts: posts, auth: auth, user: user });
     });
 
     app.post('/hostprofile', function(req, res) {
@@ -77,9 +80,9 @@ module.exports = function(app) {
     });
 
     app.post('/register', (req, res) => {
-        user = req.body.userID.toUpperCase();
+        user = req.body.userID;
         auth = true;
-        res.status(200).send('success');
+        res.status(200).send(req.body);
     });
 
     app.get('/portal', (req, res) => {

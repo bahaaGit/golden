@@ -4,6 +4,7 @@ function regUser() {
     var password = $('#newPass').val();
     var newAddr = $('#newAddr').val();
     var newPhone = $('#newPhone').val();
+    var newZip = $('#newZip').val();
     var dob = $('#dob').val();
 
 
@@ -11,6 +12,7 @@ function regUser() {
         userID: user,
         password: password,
         address: newAddr,
+        zipcode: newZip,
         phone: newPhone,
         dob: dob,
     };
@@ -23,8 +25,8 @@ function regUser() {
         data: newUser,
         success: function(data) {
             //do something with the data via front-end framework
-            console.log("sucessfull");
-            window.location.href = '/listings';
+            console.log(data);
+            // window.location.href = '/listings';
         },
         error: function(err) {
             console.log(err);
@@ -45,6 +47,7 @@ function userLogin() {
             password: pass,
         },
         success: function(data) {
+            console.log(data)
             window.location.href = '/listings';
         },
         error: function(err) {
@@ -82,5 +85,10 @@ function addPost() {
     var town = $('#addTown').val() + ', IN' + $('#addZipcode').val();
     var zipcode = $('#addZipcode').val();
     var host = $('#addHost').val();
-
+    var phone = $('#addNumber').val();
+    var newPost = {
+        address: addr,
+        town: town,
+        zipcode: zipcode,
+    }
 }
