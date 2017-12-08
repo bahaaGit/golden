@@ -6,7 +6,6 @@ body
 			for obj, index in posts
 				.col-md-4.shift
 					.post
-						//.map Map
 						img(border="0", src=obj.getMapUrl(), usemap="#map")
 						
 						.description
@@ -23,6 +22,6 @@ body
 									button(type='button' class='close' data-dismiss='modal') &times;
 								.modal-body
 									.spaceDesc Brief Description of what you'll be storing
-									textarea.textArea(cols='2' rows='5' maxlength='180')
+									textarea.textArea(cols='2' rows='5' maxlength='180' id='desc' + index)
 								.modal-footer
 									a.btn.subBtn(href='#') Submit

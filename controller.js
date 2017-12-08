@@ -1,11 +1,16 @@
-var posts = [];
-function post(address, town, zipcode, host, phone){
-    this.address = address,
-    this.town = town,
-    this.zipcode = zipcode,
-    this.host = host,
-    this.phone = phone,
-    this.getMapUrl = function() {
+module.exports = function(app) {
+
+    var auth = false;
+    var user;
+
+    var bodyParser = require("body-parser"); //Import bodyParser so we can read request body data
+    var mongoose = require('mongoose');
+
+    mongoose.connect('mongodb://abah:abah@ds133776.mlab.com:33776/golden');
+    var postSchema = new mongoose.Schema({ address: String, town: String, zipcode: String, host: String, phone: String});
+    var userSchema = new mongoose.Schema({ username: String, password: String, address: String, zipcode: String, phone: String, dod: String });
+
+    postSchema.methods.getMapUrl = function() {
         var req = this.address;
         req += ", ";
         var temp = this.town.replace("-", "");
@@ -24,20 +29,11 @@ function post(address, town, zipcode, host, phone){
         mapURL += req;
         mapURL += params;
         return mapURL;
-    }
-}
+    };
 
-var data = new post('351 Test Avenue', 'West Lafayette, IN 47906', '47906', 'Anthony Stark', '234-235-2351',);
-for (var i = 0; i < 9; i++) {
-    posts.push(data);
-}
+    var db_posts = mongoose.model('Post', postSchema);
+    var db_users = mongoose.model('User', userSchema);
 
-module.exports = function(app) {
-
-    var auth = false;
-    var user;
-
-    var bodyParser = require("body-parser"); //Import bodyParser so we can read request body data
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -53,9 +49,10 @@ module.exports = function(app) {
     });
 
     app.post('/login', (req, res) => {
-        user = req.body.userID;
-        auth = true;
-        res.status(200).send('success');
+        var user = req.body;
+        db_users.find({ username: user.userID, password: user.password }, function(err, data) {
+            if (err) throw err;
+        });
     });
 
     app.get('/hostprofile', (req, res) => {
@@ -80,9 +77,24 @@ module.exports = function(app) {
     });
 
     app.post('/register', (req, res) => {
-        user = req.body.userID;
-        auth = true;
-        res.status(200).send(req.body);
+        var user = req.body;
+
+        var data = {
+            userID: user.userID,
+            password: user.password,
+            address: user.address,
+            zipcode: user.zipcode,
+            phone: user.phone,
+            dod: user.dob,
+        }
+
+        var addUser = new User(data);
+
+        addUser.save(function(err, success){
+            if(err) throw err;
+            console.log('success');
+        });
+
     });
 
     app.get('/portal', (req, res) => {

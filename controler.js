@@ -63,10 +63,7 @@ module.exports = function(app) {
 
     app.post('/hostprofile', urlencodedParser, function(req, res) {
         var newPost = db_posts({
-            address: '351 Test Avenue',
-            town: 'West Lafayette, IN 47906',
-            zipcode: '47906',
-            host: 'Anthony Stark'
+
         }).save(function(err) {
             if (err) throw err;
             console.log("save success");
@@ -109,8 +106,11 @@ module.exports = function(app) {
     });
 
     app.post('/register', (req, res) => {
-        console.log(req.body);
-        res.render('listings');
+
+        var user = req.body;
+
+        // console.log(req.body);
+        // res.render('listings');
     });
 
     app.get('/portal', (req, res) => {
