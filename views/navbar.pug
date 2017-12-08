@@ -3,7 +3,7 @@
 	UL.navbar-nav
 		li.navbar-item
 			if auth
-				a.nav-link#navItem(href='#')= 'HELLO ' + user
+				a.nav-link#navItem(href='/hostprofile')= 'HELLO ' + user.toUpperCase()
 			else
 				a.nav-link#navItem(href='#' data-toggle='modal' data-target='#testModal') HOST LOGIN / REGISTRATION
 include sign

@@ -5,6 +5,7 @@ function regUser() {
     var password = $('#newPass').val();
     var newAddr = $('#newAddr').val();
     var newPhone = $('#newPhone').val();
+    var newZip = $('#newZip').val();
     var dob = $('#dob').val();
 
 
@@ -12,6 +13,7 @@ function regUser() {
         userID: user,
         password: password,
         address: newAddr,
+        zipcode: newZip,
         phone: newPhone,
         dob: dob,
     };
@@ -24,8 +26,8 @@ function regUser() {
         data: newUser,
         success: function(data) {
             //do something with the data via front-end framework
-            console.log("sucessfull");
-            window.location.href = '/listings';
+            console.log(data);
+            // window.location.href = '/listings';
         },
         error: function(err) {
             console.log(err);
@@ -46,6 +48,7 @@ function userLogin() {
             password: pass,
         },
         success: function(data) {
+            console.log(data)
             window.location.href = '/listings';
         },
         error: function(err) {
@@ -56,32 +59,18 @@ function userLogin() {
 
 }
 
-function getMapUrl(addr, town) {
-        var req = addr;
-        req += ", ";
-        var temp = town.replace("-", "");
-        req += temp;
-        req = req.replace("  ", " ");
-        req = req.replace(/ /g, "+");
-        
-        var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=";
-        var apiKey = "&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig"; // our API key
-        var params = "&zoom=15&size=350x200";
-        var markers = "&markers=size:mid%7Ccolor:red%7C";
-        markers += req;
-        
-        params += markers;
-        params += apiKey;
-        mapURL += req;
-        mapURL += params;
-        console.log(mapURL);
-}
-
 function addPost() {
 
     var addr = $('#addAddress').val();
     var town = $('#addTown').val() + ', IN' + $('#addZipcode').val();
     var zipcode = $('#addZipcode').val();
-    var host = $('#addHost').val();    
+    var host = $('#addHost').val();
+    var phone = $('#addNumber').val();
+
+    var newPost = {
+        address: addr,
+        town: town,
+        zipcode: zipcode,
+    }   
 
 }
