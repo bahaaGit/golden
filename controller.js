@@ -42,8 +42,8 @@ module.exports = function(app) {
 
     app.post('/hostprofile', function(req, res) {
         posts.push(req.body);
-        res.json(posts);
-        //res.render('hostprofile', { posts: posts });
+        // res.json(posts);
+        res.render('hostprofile', { posts: posts });
     });
 
     app.delete('/hostprofile/:item', function(req, res) {

@@ -162,3 +162,14 @@ function userLogin() {
 
 
 }
+
+function addPost() {
+
+    var addr = $('#addAddress').val();
+    var town = $('#addTown').val() + ', IN' + $('#addZipcode').val();
+    var zipcode = $('#addZipcode').val();
+    var host = $('#addHost').val();
+
+    
+
+}
