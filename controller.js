@@ -30,8 +30,9 @@ module.exports = function(app) {
     });
 
     app.post('/login', (req, res) => {
-        //res.redirect(307, '/listings');
-        res.redirect(307, '/hostprofile');
+        user = req.body.userID.toUpperCase();
+        auth = true;
+        res.status(200).send('success');
     });
 
     app.get('/hostprofile', (req, res) => {
@@ -56,8 +57,9 @@ module.exports = function(app) {
     });
 
     app.post('/register', (req, res) => {
-        auth = true;
         user = req.body.userID.toUpperCase();
+        auth = true;
+        res.status(200).send('success');
     });
 
     app.get('/portal', (req, res) => {

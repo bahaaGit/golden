@@ -105,6 +105,7 @@ firebase.initializeApp(config);*/
 // });
 
 
+
 function regUser() {
 
     var user = $('#newUser').val();
@@ -122,6 +123,8 @@ function regUser() {
         dob: dob,
     };
 
+    console.log(newUser);
+
     $.ajax({
         type: 'POST',
         url: '/register',
@@ -135,4 +138,27 @@ function regUser() {
             console.log(err);
         }
     })
+}
+
+function userLogin() {
+    var user = $('#userID').val();
+    var pass = $('#password').val();
+
+
+    $.ajax({
+        type: 'POST',
+        url:'/login',
+        data: {
+            userID: user,
+            password: pass,
+        },
+        success: function(data) {
+            window.location.href = '/listings';
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+
+
 }
