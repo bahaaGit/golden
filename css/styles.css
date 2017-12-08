@@ -28,7 +28,7 @@ body {
     color: black;
     left: 10em;
 }
-
+    
 #getBtn:hover {
     color: white;
     background-color: black;
@@ -185,6 +185,12 @@ input.inputs::placeholder {
     float: right;
     background-color: white;
     color: black !important;
+}
+
+.subBtn {
+    float: right;
+    background-color: black;
+    color: white !important;
 }
 
 #addForm {
