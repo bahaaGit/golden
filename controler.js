@@ -48,7 +48,7 @@ module.exports = function(app) {
             if (err) throw err;
         });
         console.log(data);
-        res.json(data);
+        res.redirect(307, '/hostprofile');
     });
 
     app.get('/hostprofile', (req, res) => {
