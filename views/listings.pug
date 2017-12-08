@@ -6,7 +6,8 @@ body
 			for obj, index in posts
 				.col-md-4.shift
 					.post
-						img(border="0", src= obj.mapUrl, usemap="#map")
+						.map
+							img(border="0", src= obj.mapUrl, usemap="#map")
 						
 						.description
 							h4.address= obj.address

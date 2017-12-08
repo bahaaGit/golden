@@ -100,10 +100,28 @@ function addPost() {
         data: newPost,
         success: function(data) {
             console.log('success');
-            window.location.href = '/listings';
+            window.location.href = '/hostprofile';
         },
         error: function(err) {
             console.log(err);
+        }
+    })
+}
+
+function deletePost(obj) {
+    var id = obj;
+
+    $.ajax({
+        type: 'DELETE',
+        url: '/deletePost',
+        data: {
+            id: id,
+        },
+        success: function() {
+            location.reload()
+        },
+        error: function(err) {
+            console.log(err)
         }
     })
 }

@@ -34,5 +34,5 @@ body
 							.list
 								.town= '- ' + obj.town
 								.host= '- Host: ' + obj.host 
-							btn.reqBtn(index) Delete
+							btn.reqBtn(onclick='deletePost("'+ obj._id + '")') Delete
 					

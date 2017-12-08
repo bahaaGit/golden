@@ -2,6 +2,8 @@ module.exports = function(app) {
 
     var auth = false;
     var user;
+    var gphone;
+    var gzip;
 
     var bodyParser = require("body-parser"); //Import bodyParser so we can read request body data
     var mongoose = require('mongoose');
@@ -52,15 +54,38 @@ module.exports = function(app) {
         var user = req.body;
         db_users.find({ username: user.userID, password: user.password }, function(err, data) {
             if (err) throw err;
+            else {
+                gphone = data.phone;
+                gzip = data.zipcode;
+            }
         });
         res.status(200).send('success');
     });
 
     app.get('/hostprofile', (req, res) => {
         //querry db
+        console.log(gzip);
+        db_posts.find({ zipcode: gzip, phone: gphone }, function(err, data) {
+            if (err) throw err;
+            res.render('hostprofile', { posts: data, user: user, auth: auth });
+        });
+    });
+
+    /*  app.get('/hostprofile', (req, res) => {
+        //querry db
         db_posts.find({}, function(err, data) {
             if (err) throw err;
             res.render('hostprofile', { posts: data, user: user, auth: auth });
+        });
+    });*/
+
+    app.delete('/deletePost', function(req, res) { //hostprofile/:item'
+        db_posts.find({
+            _id: req.body.id,
+        }).remove(function(err, data) {
+            if (err) throw err;
+            res.json({ message: "Sucessful delete" });
+            console.log("delete");
         });
     });
 
@@ -71,11 +96,11 @@ module.exports = function(app) {
     //     });
     // });
 
-    app.delete('/hostprofile/:item', function(req, res) {
-        data = posts.filter(function(post) {
-            return posts.posts.replace(/ /g, '-') !== req.param.item;
-        });
-    });
+    // app.delete('/hostprofile/:item', function(req, res) {
+    //     data = posts.filter(function(post) {
+    //         return posts.posts.replace(/ /g, '-') !== req.param.item;
+    //     });
+    // });
 
     app.all('/listings', (req, res) => {
         db_posts.find({}, function(err, datas) {
@@ -120,7 +145,7 @@ module.exports = function(app) {
 
         var addPost = db_posts(data).save(function(err, data) {
             if (err) throw err;
-            console.log('success');
+            //console.log('success');
             res.status(200).send('success');
         });
     });
