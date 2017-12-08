@@ -2,8 +2,29 @@ var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://abah:abah@ds133776.mlab.com:33776/golden');
-var postSchema = new mongoose.Schema({ address: String, town: String, zipcode: String, host: String });
+var postSchema = new mongoose.Schema({ address: String, town: String, zipcode: String, host: String, phone: String});
 var userSchema = new mongoose.Schema({ username: String, password: String, address: String, phone: String, dod: String });
+
+postSchema.methods.getMapUrl = function() {
+    var req = this.address;
+    req += ", ";
+    var temp = this.town.replace("-", "");
+    req += temp;
+    req = req.replace("  ", " ");
+    req = req.replace(/ /g, "+");
+
+    var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=";
+    var apiKey = "&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig"; // our API key
+    var params = "&zoom=15&size=350x200";
+    var markers = "&markers=size:mid%7Ccolor:red%7C";
+    markers += req;
+
+    params += markers;
+    params += apiKey;
+    mapURL += req;
+    mapURL += params;
+    return mapURL;
+};
 
 var db_posts = mongoose.model('Post', postSchema);
 var db_users = mongoose.model('User', userSchema);
@@ -23,13 +44,6 @@ module.exports = function(app) {
         var userID = req.body.userID;
         var password = req.body.password;
 
-        //Make sure the username and password were both provided
-        /*if (!userID || !password) {
-            return res.status(401).json({ message: "invalid_credentials" });
-        }
-        db_users.find({ username: 'abah', password: 'abah' }, function(err, data) {
-            if (err) throw err;
-        });*/
         db_users.find({ username: 'abah', password: 'abah' }, function(err, data) {
             if (err) throw err;
         });
