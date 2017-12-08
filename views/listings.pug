@@ -7,7 +7,7 @@ body
 				.col-md-4.shift
 					.post
 						//.map Map
-						img(border="0", src="https://maps.googleapis.com/maps/api/staticmap?center=305+N+University+St,+West+Lafayette,+IN+47907&zoom=15&size=350x200&markers=size:mid%7Ccolor:red%7C305+N+University+St,+West+Lafayette,+IN+47907&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig", width="350", height="200", alt="Host Address", usemap="#map")
+						img(border="0", src=obj.getMapUrl(), usemap="#map")
 						
 						.description
 							h4.address= obj.address

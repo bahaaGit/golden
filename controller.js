@@ -3,7 +3,7 @@ var data = {
     address: '351 Test Avenue',
     town: 'West Lafayette, IN 47906',
     zipcode: '47906',
-    host: 'Anthony Stark'
+    host: 'Anthony Stark',
     getMapUrl: function() {
         var req = this.address;
         req += ", ";

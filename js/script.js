@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 << << << < HEAD
 $(document).ready(function() {
 
@@ -308,6 +309,8 @@ firebase.initializeApp(config);*/
 // });
 
 
+=======
+>>>>>>> 20cef7728f492f8f809f06d57002429370e855f8
 
 function regUser() {
 
