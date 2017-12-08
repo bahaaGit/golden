@@ -11,13 +11,13 @@ var data = {
         req += temp;
         req = req.replace("  ", " ");
         req = req.replace(/ /g, "+");
-        
+
         var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=";
         var apiKey = "&key=AIzaSyBCRzpLARuNB2qrxt2YEdzwGtwrEF-P-Ig"; // our API key
         var params = "&zoom=15&size=350x200";
         var markers = "&markers=size:mid%7Ccolor:red%7C";
         markers += req;
-        
+
         params += markers;
         params += apiKey;
         mapURL += req;
@@ -36,7 +36,7 @@ module.exports = function(app) {
 
     var bodyParser = require("body-parser"); //Import bodyParser so we can read request body data
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.urlencoded({ extended: true }));
 
 
     function authMiddleware(req, res, next) {
@@ -73,7 +73,7 @@ module.exports = function(app) {
     });
 
     app.all('/listings', (req, res) => {
-        res.render('listings', { posts: posts, user: user, auth: auth});
+        res.render('listings', { posts: posts, user: user, auth: auth });
     });
 
     app.post('/register', (req, res) => {
@@ -83,6 +83,6 @@ module.exports = function(app) {
     });
 
     app.get('/portal', (req, res) => {
-        res.render('portal', { portal: 'portal'});
+        res.render('portal', { portal: 'portal' });
     });
 }
