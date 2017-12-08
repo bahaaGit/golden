@@ -101,16 +101,18 @@ module.exports = function(app) {
     //         return posts.posts.replace(/ /g, '-') !== req.param.item;
     //     });
     // });
-
-    app.all('/listings', (req, res) => {
-        db_posts.find({}, function(err, datas) {
-            if (err) throw err;
-            console.log(datas);
-            res.render('listings', { posts: datas, user: user, auth: auth });
+    app.delete('/hostprofile/:item', function(req, res) {
+        data = posts.filter(function(post) {
+            return posts.posts.replace(/ /g, '-') !== req.param.item;
         });
     });
 
-
+    app.all('/listings', (req, res) => {
+        db_posts.find({}, function(err, data) {
+            if (err) throw err;
+            res.render('listings', { posts: data, user: user, auth: auth });
+        });
+    });
 
     app.post('/register', (req, res) => {
         var user = req.body;

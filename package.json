@@ -30,7 +30,7 @@
   "devDependencies": {
     "reload": "^2.2.2"
   },
-  "engine": {
+  "engines": {
     "node": "8.4.0"
   }
 }
